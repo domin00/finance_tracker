@@ -1,0 +1,44 @@
+<html>
+<body>
+  <h1> Portfolio Tracker </h1>
+
+  <!-- Post quote of the specified symbol -->
+  <p>
+    <table>
+      <tr>
+        <th> Symbols </th>
+        <th> Quantities </th>
+        <th> Buy Prices </th>
+        <th> Buy Dates </th>
+      </tr>
+      <% for(var i = 0; i < buyprices.length; i++) { %>
+      <tr>
+        <th> <%= symbols[i]%> </th>
+        <th> <%= quantities[i]%> </th>
+        <th> <%= buyprices[i]%> </th>
+        <th> <%= buydates[i]%> </th>
+        <th> <form action="/deleteitem" method="POST">
+          <button type="submit" name="button" value=<%=rowids[i]%>> Delete </button>
+        </form> </th>
+      </tr>
+      <% } %>
+    </table>
+  </p>
+  <!-- Submissionn form for new data -->
+  <p>
+  <form class="col-6 mx-auto" method="post" action="/add">
+    <div class="input-group">
+      <input type="number" step="any" class="form-control" placeholder="Buy Price" name="price"
+      required>
+      <input type="text" class="form-control" placeholder="Buy date: YYYY-MM-DD" name="date"
+      required>
+      <input type="text" class="form-control" placeholder="Stock symbol" name="symbol"
+      required>
+      <input type="number" step="any" class="form-control" placeholder="Stock quantity" name="quantity"
+      required>
+      <span> <button type="submit" class="newentrybtn">Submit entry</button></span>
+    </div>
+  </form>
+  </p>
+</body>
+</html>
